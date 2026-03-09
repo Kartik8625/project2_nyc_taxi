@@ -2,6 +2,7 @@ import snowflake.connector
 import pandas as pd
 import logging
 import glob
+import os
 
 logging.basicConfig(
     level=logging.INFO,
