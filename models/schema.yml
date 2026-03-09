@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: nyc_taxi
+    database: NYC_TAXI_DB
+    schema: NYC_TAXI_SCHEMA
+    tables:
+      - name: NYC_TAXI_TRIPS
+
+models:
+  - name: stg_nyc_taxi_trips
+    description: "Cleaned and staged NYC Taxi trips"
+    columns:
+      - name: fare_amount
+        tests:
+          - not_null
+      - name: trip_distance
+        tests:
+          - not_null
+
+  - name: mart_revenue_by_time
+    description: "Revenue aggregated by time of day"
+    columns:
+      - name: time_of_day
+        tests:
+          - not_null
+          - unique
